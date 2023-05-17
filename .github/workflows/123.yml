@@ -1,0 +1,15 @@
+name: Test Build
+on: [push]
+jobs:
+    Test_gcc:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out repository code
+          uses: actions/checkout@v3
+        - run: sudo apt update -y
+        - run: sudo apt install -y cmake
+        - run: cd solver_application && cmake -H. -B_build && cmake --build _build && cmake --build _build --target equation && ./_build/equation
+
+
+
+  
